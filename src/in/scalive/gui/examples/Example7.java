@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.util.Date;
 import java.util.HashSet;
-public class E1 {
+public class Example7 {
     public static void main(String[] args) {
         Frame fr=new Frame((new Date()).toString());
         fr.setLocation(300,300);

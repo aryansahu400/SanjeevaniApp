@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.util.Date;
 
-class MyFrame2 extends Frame{
-    public MyFrame2(String title,Color c){
+class MyFrame3 extends Frame{
+    public MyFrame3(String title,Color c){
         super(title);
         this.setSize(400,400);
         this.setVisible(true);
@@ -15,8 +15,9 @@ class MyFrame2 extends Frame{
 }
 public class Example10 {
     public static void main(String[] args) {
-        Frame fr=new MyFrame2("Aryan's Frame", Color.cyan);
-        Frame fr2=new MyFrame2((new Date()).toString(), Color.blue);
+        Frame fr=new MyFrame3("Aryan's Frame", new Color(0,51,153));
+        Frame fr2=new MyFrame3((new Date()).toString(), new Color(194, 204, 196));
+        Frame fr3=new MyFrame3((new Date()).toString(), new Color(155, 185, 202));
     }
     
 }

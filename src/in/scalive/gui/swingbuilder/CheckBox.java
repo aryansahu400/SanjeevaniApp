@@ -51,16 +51,16 @@ public class CheckBox extends javax.swing.JFrame {
         myPanelLayout.setHorizontalGroup(
             myPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(myPanelLayout.createSequentialGroup()
-                .addGap(147, 147, 147)
+                .addGap(142, 142, 142)
                 .addComponent(chcRed, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         myPanelLayout.setVerticalGroup(
             myPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(myPanelLayout.createSequentialGroup()
-                .addGap(128, 128, 128)
+                .addGap(59, 59, 59)
                 .addComponent(chcRed)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

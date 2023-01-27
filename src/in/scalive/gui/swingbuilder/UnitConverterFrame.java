@@ -37,7 +37,6 @@ public class UnitConverterFrame extends javax.swing.JFrame {
         txtIn = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtOut = new javax.swing.JTextField();
-        btnConvert = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         btnQuit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -68,15 +67,6 @@ public class UnitConverterFrame extends javax.swing.JFrame {
         txtOut.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtOut.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnConvert.setBackground(new java.awt.Color(206, 248, 255));
-        btnConvert.setText("Convert");
-        btnConvert.setBorder(new javax.swing.border.MatteBorder(null));
-        btnConvert.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConvertActionPerformed(evt);
-            }
-        });
-
         btnClear.setBackground(new java.awt.Color(206, 248, 255));
         btnClear.setText("Clear");
         btnClear.setBorder(new javax.swing.border.MatteBorder(null));
@@ -101,14 +91,29 @@ public class UnitConverterFrame extends javax.swing.JFrame {
         jrbMeter.setBackground(new java.awt.Color(242, 245, 238));
         buttonGroup1.add(jrbMeter);
         jrbMeter.setText("Meter");
+        jrbMeter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMeterActionPerformed(evt);
+            }
+        });
 
         jrbCentimeter.setBackground(new java.awt.Color(242, 245, 238));
         buttonGroup1.add(jrbCentimeter);
         jrbCentimeter.setText("Centimeter");
+        jrbCentimeter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbCentimeterActionPerformed(evt);
+            }
+        });
 
         jrbMilimeter.setBackground(new java.awt.Color(242, 245, 238));
         buttonGroup1.add(jrbMilimeter);
         jrbMilimeter.setText("Milimeter");
+        jrbMilimeter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbMilimeterActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -119,7 +124,7 @@ public class UnitConverterFrame extends javax.swing.JFrame {
                 .addComponent(jrbMeter, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68)
                 .addComponent(jrbCentimeter, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addComponent(jrbMilimeter, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -155,11 +160,10 @@ public class UnitConverterFrame extends javax.swing.JFrame {
                             .addComponent(txtIn)
                             .addComponent(txtOut, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnConvert, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(btnQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6)
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(51, 51, 51))
         );
         jPanel1Layout.setVerticalGroup(
@@ -179,7 +183,6 @@ public class UnitConverterFrame extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConvert, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
@@ -199,32 +202,6 @@ public class UnitConverterFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConvertActionPerformed
-        String s=txtIn.getText().trim();
-        try{
-            int km=Integer.parseInt(s);
-            long result;
-            String unit="";
-            if(jrbMeter.isSelected()){
-                                
-                result=km*1000l;
-                unit="m";
-            }else if(jrbCentimeter.isSelected()){
-                result=km*100000l;
-                unit="cm";
-            }else if(jrbMilimeter.isSelected()){
-                result=km*1000000l;
-                unit="mm";
-            }else{
-                JOptionPane.showMessageDialog(null,"Plese select a convertion unit","Error",JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            txtOut.setText(result+unit);
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null,"Plese enetr a valid number","Error",JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnConvertActionPerformed
-
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         txtIn.requestFocus();
         txtIn.setText("");
@@ -236,6 +213,62 @@ public class UnitConverterFrame extends javax.swing.JFrame {
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnQuitActionPerformed
+
+    private void jrbMeterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMeterActionPerformed
+        String s=txtIn.getText().trim();
+        try{
+            int km=Integer.parseInt(s);
+            long result=0;
+            String unit="";
+            if(jrbMeter.isSelected()){
+                                
+                result=km*1000l;
+                unit="m";
+            }
+            txtOut.setText(result+unit);
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Plese enetr a valid number","Error",JOptionPane.ERROR_MESSAGE);
+            
+            jrbMeter.setSelected(false);
+        }
+    }//GEN-LAST:event_jrbMeterActionPerformed
+
+    private void jrbCentimeterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCentimeterActionPerformed
+        String s=txtIn.getText().trim();
+        try{
+            int km=Integer.parseInt(s);
+            long result=0;
+            String unit="";
+            if(jrbCentimeter.isSelected()){
+                                
+                result=km*100000l;
+                unit="cm";
+            }
+            txtOut.setText(result+unit);
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Plese enetr a valid number","Error",JOptionPane.ERROR_MESSAGE);
+            
+            jrbCentimeter.setSelected(false);
+        }
+    }//GEN-LAST:event_jrbCentimeterActionPerformed
+
+    private void jrbMilimeterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbMilimeterActionPerformed
+        String s=txtIn.getText().trim();
+        try{
+            int km=Integer.parseInt(s);
+            long result=0;
+            String unit="";
+            if(jrbMilimeter.isSelected()){
+                                
+                result=km*1000000l;
+                unit="mm";
+            }
+            txtOut.setText(result+unit);
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null,"Plese enetr a valid number","Error",JOptionPane.ERROR_MESSAGE);
+            jrbMilimeter.setSelected(false);
+        }
+    }//GEN-LAST:event_jrbMilimeterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,7 +307,6 @@ public class UnitConverterFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnConvert;
     private javax.swing.JButton btnQuit;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;

@@ -149,6 +149,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="BACK"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
           <Properties>
@@ -254,6 +257,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="logout"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

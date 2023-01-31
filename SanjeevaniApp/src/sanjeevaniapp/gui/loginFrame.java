@@ -9,6 +9,7 @@ import sanjeevaniapp.dbutil.EncryptData;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import sanjeevaniapp.dao.UserDao;
+import sanjeevaniapp.dbutil.DBConnection;
 import sanjeevaniapp.dbutil.UserProfile;
 import sanjeevaniapp.pojo.User;
 
@@ -16,11 +17,11 @@ import sanjeevaniapp.pojo.User;
  *
  * @author LENOVO
  */
-public class loginFrame extends javax.swing.JFrame {
+public class LoginFrame extends javax.swing.JFrame {
 
     private String password;
     private String loginId;
-    public loginFrame() {
+    public LoginFrame() {
         initComponents();
     }
 
@@ -102,6 +103,11 @@ public class loginFrame extends javax.swing.JFrame {
 
         btnQuit.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnQuit.setText("Quit");
+        btnQuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout utilityPanelLayout = new javax.swing.GroupLayout(utilityPanel);
         utilityPanel.setLayout(utilityPanelLayout);
@@ -250,6 +256,11 @@ public class loginFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
+    private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
+        DBConnection.closeConnection();
+        System.exit(0);
+    }//GEN-LAST:event_btnQuitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -267,20 +278,21 @@ public class loginFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(loginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new loginFrame().setVisible(true);
+                new LoginFrame().setVisible(true);
             }
         });
     }

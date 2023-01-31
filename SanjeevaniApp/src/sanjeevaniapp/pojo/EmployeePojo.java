@@ -13,6 +13,15 @@ public class EmployeePojo {
     private String EmpDept;
     private String EmpName;
     private Double EmpSal;
+    public EmployeePojo(){
+        
+    }
+    public EmployeePojo(String EmpId, String EmpDept, String EmpName, Double EmpSal) {
+        this.EmpId = EmpId;
+        this.EmpDept = EmpDept;
+        this.EmpName = EmpName;
+        this.EmpSal = EmpSal;
+    }
     
     
     //EmpName EmpDept EmpSal

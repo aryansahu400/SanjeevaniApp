@@ -102,6 +102,11 @@ public class AdminOptionFrame extends javax.swing.JFrame {
 
         btnLogout.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -233,6 +238,11 @@ public class AdminOptionFrame extends javax.swing.JFrame {
         (new ManageEmployeesFrame()).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnManageEmployeesActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        (new LoginFrame()).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments

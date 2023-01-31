@@ -4,6 +4,13 @@
  */
 package sanjeevaniapp.gui;
 
+import java.util.List;
+import sanjeevaniapp.dao.EmpDao;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import sanjeevaniapp.dbutil.UserProfile;
+import sanjeevaniapp.pojo.EmployeePojo;
+
 /**
  *
  * @author LENOVO
@@ -15,6 +22,7 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
      */
     public UpdateEmployeeFrame() {
         initComponents();
+        addEmployeeIds();
     }
 
     /**
@@ -36,11 +44,11 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jcbEmployeeJob = new javax.swing.JComboBox<>();
-        tctEmployeeSal = new javax.swing.JTextField();
+        txtEmployeeSal = new javax.swing.JTextField();
         txtEmployeeName = new javax.swing.JTextField();
         btnAddEmployee = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
-        jvbEmployeeId = new javax.swing.JComboBox<>();
+        jcbEmployeeId = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,6 +61,11 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
         utilityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Update Employee"), "Update Employee", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
 
         btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -70,15 +83,15 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
 
         jcbEmployeeJob.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jcbEmployeeJob.setMaximumRowCount(3);
-        jcbEmployeeJob.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Doctor", "Receptionist", " " }));
+        jcbEmployeeJob.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
         jcbEmployeeJob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbEmployeeJobActionPerformed(evt);
             }
         });
 
-        tctEmployeeSal.setBackground(new java.awt.Color(204, 224, 251));
-        tctEmployeeSal.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        txtEmployeeSal.setBackground(new java.awt.Color(204, 224, 251));
+        txtEmployeeSal.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
 
         txtEmployeeName.setBackground(new java.awt.Color(204, 224, 251));
         txtEmployeeName.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
@@ -89,13 +102,33 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
         });
 
         btnAddEmployee.setText("Update Employee");
+        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddEmployeeActionPerformed(evt);
+            }
+        });
 
         btnLogout.setText("logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
-        jvbEmployeeId.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jvbEmployeeId.setMaximumRowCount(5);
+        jcbEmployeeId.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jcbEmployeeId.setMaximumRowCount(5);
+        jcbEmployeeId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbEmployeeIdActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Home");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout utilityPanelLayout = new javax.swing.GroupLayout(utilityPanel);
         utilityPanel.setLayout(utilityPanelLayout);
@@ -112,7 +145,7 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jcbEmployeeJob, 0, 451, Short.MAX_VALUE)
-                            .addComponent(jvbEmployeeId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jcbEmployeeId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,7 +153,7 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtEmployeeName, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
-                            .addComponent(tctEmployeeSal))
+                            .addComponent(txtEmployeeSal))
                         .addGap(10, 10, 10))
                     .addGroup(utilityPanelLayout.createSequentialGroup()
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -140,12 +173,12 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
                     .addComponent(txtEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jvbEmployeeId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbEmployeeId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5)
-                    .addComponent(tctEmployeeSal, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmployeeSal, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jcbEmployeeJob, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,6 +234,68 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmployeeNameActionPerformed
 
+    private void jcbEmployeeIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEmployeeIdActionPerformed
+        String empId=jcbEmployeeId.getSelectedItem().toString();
+        EmployeePojo emp;
+        try{
+            emp=EmpDao.getEmloyeeDetails(empId);
+        }catch(SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Data Base error in Update employee frame: "+e.getMessage());
+            return;
+        }
+        if(emp==null){
+            JOptionPane.showMessageDialog(null, "Data Base error in Update employee frame: ");
+            return;
+        }else{
+            txtEmployeeName.setText(emp.getEmpName());
+            txtEmployeeSal.setText(String.valueOf(emp.getEmpSal()));
+            jcbEmployeeJob.removeAllItems();
+            jcbEmployeeJob.addItem(emp.getEmpDept());
+            
+        }
+    }//GEN-LAST:event_jcbEmployeeIdActionPerformed
+
+    private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
+        if(!ValidateInputs()){
+            JOptionPane.showMessageDialog(null, "Enter values in name and salary");
+            return;
+        }
+        EmployeePojo emp=new EmployeePojo();
+        emp.setEmpDept(jcbEmployeeJob.getSelectedItem().toString());
+        emp.setEmpName(txtEmployeeName.getText().trim());
+        emp.setEmpId(jcbEmployeeId.getSelectedItem().toString());
+        emp.setEmpSal(Double.parseDouble(txtEmployeeSal.getText().trim()));
+        try{
+            if(EmpDao.updateEmployee(emp)){ 
+                if(emp.getEmpDept().equalsIgnoreCase("admin") && UserProfile.getUsername()!=null){
+                    UserProfile.setUsername(emp.getEmpName());
+                }
+                JOptionPane.showMessageDialog(null, "record added successfully!");
+            }else{
+                JOptionPane.showMessageDialog(null, "record not added!","ERROR",JOptionPane.ERROR_MESSAGE);
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "database error: "+e.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAddEmployeeActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        (new LoginFrame()).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        (new AdminOptionFrame()).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        (new ManageEmployeesFrame()).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -248,10 +343,30 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JComboBox<String> jcbEmployeeId;
     private javax.swing.JComboBox<String> jcbEmployeeJob;
-    private javax.swing.JComboBox<String> jvbEmployeeId;
-    private javax.swing.JTextField tctEmployeeSal;
     private javax.swing.JTextField txtEmployeeName;
+    private javax.swing.JTextField txtEmployeeSal;
     private javax.swing.JPanel utilityPanel;
     // End of variables declaration//GEN-END:variables
+
+    private void addEmployeeIds() {
+        List<String> list;
+        try{
+            list=EmpDao.getAllEmployeeId();
+        }catch(SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Data base error "+e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        for(String empId:list){
+            jcbEmployeeId.addItem(empId);
+        }
+    }
+
+    private boolean ValidateInputs() {
+        if(txtEmployeeName.getText().trim().isEmpty() || txtEmployeeSal.getText().trim().isEmpty())return false;
+        else return true;
+    }
+
 }

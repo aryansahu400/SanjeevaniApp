@@ -19,7 +19,7 @@ public class AddEmployeeFrame extends javax.swing.JFrame {
      */
     public AddEmployeeFrame() {
         initComponents();
-        txtEmployeeId.setText("E102");
+        generateNewId();
     }
 
     /**
@@ -55,6 +55,11 @@ public class AddEmployeeFrame extends javax.swing.JFrame {
         utilityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Employee Details", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
 
         btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
@@ -101,6 +106,11 @@ public class AddEmployeeFrame extends javax.swing.JFrame {
         });
 
         btnLogout.setText("logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout utilityPanelLayout = new javax.swing.GroupLayout(utilityPanel);
         utilityPanel.setLayout(utilityPanelLayout);
@@ -222,6 +232,16 @@ public class AddEmployeeFrame extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        (new LoginFrame()).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        (new ManageEmployeesFrame()).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments

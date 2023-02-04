@@ -6,6 +6,8 @@ package sanjeevaniapp.dbutil;
 
 public class UserProfile {
 
+    
+
     public static String getUsername() {
         return username;
     }

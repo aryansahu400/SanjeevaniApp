@@ -39,9 +39,9 @@ public class DoctorsDao {
         ps.setString(2, doc.getDoctorName());
         ps.setString(3, doc.getEmail());
         ps.setString(4, doc.getContact());
-        ps.setString(4, doc.getQualification());
-        ps.setString(4, doc.getGender());
-        ps.setString(4, doc.getSpecilist());
+        ps.setString(5, doc.getQualification());
+        ps.setString(6, doc.getGender());
+        ps.setString(7, doc.getSpecilist());
         return ps.executeUpdate()==1;
     }
     

@@ -6,8 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import sanjeevaniapp.dbutil.DBConnection;
-import sanjeevaniapp.pojo.EmployeePojo;
 import sanjeevaniapp.pojo.User;
+import sanjeevaniapp.pojo.UserPojo;
 
 public class UserDao {
     public static String validateUser(User user) throws SQLException{
@@ -23,6 +23,33 @@ public class UserDao {
         }
         return name;
     }
+
+    public static boolean updateUser(String currentName, String empName)throws SQLException {
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("UPDATE users SET user_name=? where user_name=?");
+        ps.setString(1,empName);
+        ps.setString(2,currentName);
+        return ps.executeUpdate()==1;
+    }
+
+    public static boolean removeUser(String empName) throws SQLException {
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("DELETE users where user_name=?");
+        ps.setString(1,empName);
+        return ps.executeUpdate()==1;
+
+    }
+    
+    public static boolean addUser(UserPojo user) throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("INSERT INTO users VALUES(?,?,?,?)");
+        ps.setString(1,user.getLoginId());
+        ps.setString(2, user.getUserName());
+        ps.setString(3, user.getPassword());
+        ps.setString(4, user.getUserType());
+        return ps.executeUpdate()==1;
+    }
+    
     
      
 }

@@ -23,5 +23,12 @@ public class ReceptionistDao {
         ps.executeUpdate();
         System.out.println("updated!");
     }
+
+    static void remove(String empName)  throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("DELETE FROM receptionists where receptionist_name=?");
+        ps.setString(1,empName);
+        ps.executeUpdate();
+    }
     
 }

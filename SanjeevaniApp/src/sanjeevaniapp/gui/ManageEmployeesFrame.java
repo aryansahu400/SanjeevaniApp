@@ -4,6 +4,8 @@
  */
 package sanjeevaniapp.gui;
 
+import sanjeevaniapp.dbutil.UserProfile;
+
 /**
  *
  * @author LENOVO
@@ -15,6 +17,7 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
      */
     public ManageEmployeesFrame() {
         initComponents();
+        if(UserProfile.getUsername()!=null)lblName.setText(lblName.getText().replace("Aryan", UserProfile.getUsername()));
     }
 
     /**
@@ -30,7 +33,7 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
         utilityPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         btnRemoveEmployee = new javax.swing.JButton();
         btnAddEmployee = new javax.swing.JButton();
@@ -51,13 +54,18 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(51, 51, 51));
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 4, true));
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(235, 243, 254));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Hello, User - Aryan");
+        lblName.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        lblName.setForeground(new java.awt.Color(235, 243, 254));
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblName.setText("Hello, User - Aryan");
 
         btnLogout.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -65,7 +73,7 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 649, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
@@ -75,7 +83,7 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnLogout))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -142,6 +150,11 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
         );
 
         btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout utilityPanelLayout = new javax.swing.GroupLayout(utilityPanel);
         utilityPanel.setLayout(utilityPanelLayout);
@@ -233,7 +246,8 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddEmployeeActionPerformed
 
     private void btnViewEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEmployeeActionPerformed
-        // TODO add your handling code here:
+        new ViewEmployeeFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnViewEmployeeActionPerformed
 
     private void btnUpdateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEmployeeActionPerformed
@@ -245,6 +259,16 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
         (new RemoveEmployeeFrame()).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRemoveEmployeeActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        new LoginFrame().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        new AdminOptionFrame().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -290,11 +314,11 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnViewEmployee;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblName;
     private javax.swing.JPanel utilityPanel;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,5 +29,7 @@ public class User{
     public static void setUserType(String userType) {
         User.userType = userType;
     }
+
+    
 }
  

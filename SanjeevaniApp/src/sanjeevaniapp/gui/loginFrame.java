@@ -324,6 +324,7 @@ public class LoginFrame extends javax.swing.JFrame {
             return false;
         }else{
             password=new String(EncryptData.encryptString(new String(pwd)));
+            System.out.println(password);
             return true;
         }
     }

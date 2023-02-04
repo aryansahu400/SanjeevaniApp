@@ -3,6 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sanjeevaniapp.gui;
+import java.sql.SQLException;
+import java.util.List;
+import javax.swing.JOptionPane;
+import sanjeevaniapp.dao.EmpDao;
+import sanjeevaniapp.dbutil.UserProfile;
+import sanjeevaniapp.pojo.EmployeePojo;
 
 /**
  *
@@ -15,6 +21,7 @@ public class RemoveEmployeeFrame extends javax.swing.JFrame {
      */
     public RemoveEmployeeFrame() {
         initComponents();
+        displayIds();
     }
 
     /**
@@ -45,18 +52,29 @@ public class RemoveEmployeeFrame extends javax.swing.JFrame {
         utilityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Update Employee"), "Remove Employee", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
 
         btnBack.setText("BACK");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel2.setText("Employee ID");
 
+        btnRemoveEmployee.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         btnRemoveEmployee.setText("Remove Employee");
+        btnRemoveEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveEmployeeActionPerformed(evt);
+            }
+        });
 
         btnLogout.setText("logout");
 
         jcbEmployeeId.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
-        jcbEmployeeId.setMaximumRowCount(5);
+        jcbEmployeeId.setMaximumRowCount(3);
 
         jButton1.setText("Home");
 
@@ -65,40 +83,46 @@ public class RemoveEmployeeFrame extends javax.swing.JFrame {
         utilityPanelLayout.setHorizontalGroup(
             utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(utilityPanelLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, utilityPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(98, 98, 98)
-                        .addComponent(jcbEmployeeId, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(368, 368, 368))
+                .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(utilityPanelLayout.createSequentialGroup()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRemoveEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(184, 184, 184)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(177, 177, 177)
-                        .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(23, 23, 23)
+                        .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1446, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(utilityPanelLayout.createSequentialGroup()
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(381, 381, 381)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(utilityPanelLayout.createSequentialGroup()
+                        .addGap(238, 238, 238)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(102, 102, 102)
+                        .addComponent(jcbEmployeeId, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(132, 132, 132)
+                        .addComponent(btnRemoveEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         utilityPanelLayout.setVerticalGroup(
             utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, utilityPanelLayout.createSequentialGroup()
-                .addGap(0, 81, Short.MAX_VALUE)
+                .addGap(66, 66, 66)
                 .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jcbEmployeeId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(78, 78, 78)
+                    .addComponent(jcbEmployeeId, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRemoveEmployee))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(btnLogout)
-                    .addComponent(btnRemoveEmployee)
-                    .addComponent(jButton1))
-                .addGap(14, 14, 14))
+                .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(utilityPanelLayout.createSequentialGroup()
+                        .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBack)
+                            .addComponent(btnLogout))
+                        .addGap(14, 14, 14))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, utilityPanelLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addContainerGap())))
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sanjeevaniapp/gui/admin page.jpg"))); // NOI18N
@@ -137,6 +161,47 @@ public class RemoveEmployeeFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRemoveEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveEmployeeActionPerformed
+        EmployeePojo emp=new EmployeePojo();
+        try{
+            if(emp==null){
+                return;
+            }
+            emp=EmpDao.getEmloyeeDetails(jcbEmployeeId.getSelectedItem().toString());
+            
+            int confirm=JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the following employee: Employee id="+emp.getEmpId()+", Employee name="+emp.getEmpName()+", Job="+emp.getEmpDept());
+            
+            if(emp.getEmpName().equals(UserProfile.getUsername())){
+                JOptionPane.showMessageDialog(null,"The current employee is logged in, CANNOT REMOVE");
+                return;
+            }
+            if(confirm==JOptionPane.OK_OPTION){
+                
+                
+                if(EmpDao.removeEmployee(emp)){
+                    JOptionPane.showMessageDialog(null,"Employee removed succesfully");
+                    jcbEmployeeId.removeItem(emp.getEmpId().toString());
+                    return;
+                }else{
+                    JOptionPane.showMessageDialog(null,"Employee not removed");
+                    return;
+                }
+            }else{
+                return;
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Data base error in remove employee frame: "+ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+    }//GEN-LAST:event_btnRemoveEmployeeActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        (new ManageEmployeesFrame()).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,4 +251,18 @@ public class RemoveEmployeeFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbEmployeeId;
     private javax.swing.JPanel utilityPanel;
     // End of variables declaration//GEN-END:variables
+
+    private void displayIds() {
+        List<String> list;
+        try{
+            list=EmpDao.getAllEmployeeId();
+        }catch(SQLException e){
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null," Error in Database in remove frame: "+e.getMessage());
+            return;
+        }
+        for(String id:list){
+            jcbEmployeeId.addItem(id);
+        }
+    }
 }

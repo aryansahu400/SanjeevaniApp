@@ -145,6 +145,11 @@ public class AdminOptionFrame extends javax.swing.JFrame {
         btnManageDoctor.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnManageDoctor.setText("Manage Doctors");
         btnManageDoctor.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnManageDoctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageDoctorActionPerformed(evt);
+            }
+        });
 
         btnManageReceptionist.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnManageReceptionist.setText("Manage Receptionist");
@@ -243,6 +248,11 @@ public class AdminOptionFrame extends javax.swing.JFrame {
         (new LoginFrame()).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnManageDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDoctorActionPerformed
+        new ManageDoctorsFrame().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnManageDoctorActionPerformed
 
     /**
      * @param args the command line arguments

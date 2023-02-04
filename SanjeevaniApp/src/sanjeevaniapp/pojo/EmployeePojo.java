@@ -54,7 +54,7 @@ public class EmployeePojo {
         return EmpSal;
     }
 
-    public void setEmpSal(Double EmpSal) {
+    public void setEmpSal(double EmpSal) {
         this.EmpSal = EmpSal;
     }
     

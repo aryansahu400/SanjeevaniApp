@@ -11,6 +11,9 @@ import java.sql.SQLException;
 import sanjeevaniapp.dbutil.DBConnection;
 import sanjeevaniapp.pojo.DoctorsPojo;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 /**
  *
  * @author LENOVO
@@ -37,7 +40,7 @@ public class DoctorsDao {
         PreparedStatement ps=conn.prepareStatement("Insert into doctors values(?,?,?,?,?,?,?)");
         ps.setString(1, doc.getDoctorId());
         ps.setString(2, doc.getDoctorName());
-        ps.setString(3, doc.getEmail());
+        ps.setString(3, doc.getEmailId());
         ps.setString(4, doc.getContact());
         ps.setString(5, doc.getQualification());
         ps.setString(6, doc.getGender());
@@ -59,5 +62,45 @@ public class DoctorsDao {
         }
     }
     
+    public static List<String> getAllDoctorIds()throws SQLException{
+        List<String> list=new ArrayList<>();
+        Connection conn=DBConnection.getConnection();
+        Statement st=conn.createStatement();
+        ResultSet rs=st.executeQuery("SELECT doctor_id FROM doctors");
+        while(rs.next()){
+            list.add(rs.getString(1));
+        }
+        return list;
+    }
+    public static boolean removeDoctorById(String docId) throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("Select doctor_name from doctors where doctor_id=?");
+        
+        ps.setString(1,docId);
+        ResultSet rs=ps.executeQuery();
+        while(rs.next())UserDao.removeUser(rs.getString(1));
+        ps=conn.prepareStatement("DELETE FROM doctors where doctor_id=?");
+        ps.setString(1, docId);
+        return ps.executeUpdate()==1;
+    }
+    public static List<DoctorsPojo> getAllDoctorDetails() throws SQLException{
+        List<DoctorsPojo> list=new ArrayList<>();
+        Connection conn=DBConnection.getConnection();
+        Statement s= conn.createStatement();
+        ResultSet rs=s.executeQuery("Select * from doctors order by doctor_id");
+        while(rs.next()){
+            DoctorsPojo doctor=new DoctorsPojo();
+            doctor.setDoctorName(rs.getString("doctor_name"));
+            doctor.setDoctorId(rs.getString("doctor_id"));
+            doctor.setGender(rs.getString("gender"));
+            doctor.setEmailId(rs.getString("email_id"));
+            doctor.setContact(rs.getString("contact_no"));
+            doctor.setQualification(rs.getString("QUALIFICATION"));
+            doctor.setSpecilist(rs.getString("SPECIALIST"));
+            list.add(doctor);
+            
+        }
+        return list;
+    }
     
 }

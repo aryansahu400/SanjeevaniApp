@@ -47,11 +47,11 @@ public class DoctorsPojo {
         this.doctorName = doctorName;
     }
 
-    public String getEmail() {
+    public String getEmailId() {
         return emailId;
     }
 
-    public void setEmail(String email) {
+    public void setEmailId(String email) {
         this.emailId = email;
     }
 

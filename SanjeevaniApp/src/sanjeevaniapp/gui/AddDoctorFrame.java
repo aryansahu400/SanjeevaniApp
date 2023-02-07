@@ -354,6 +354,7 @@ public class AddDoctorFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jcbEmployeeIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEmployeeIdActionPerformed
+        
         txtDoctorName.setText(map.get(jcbEmployeeId.getSelectedItem().toString()));
     }//GEN-LAST:event_jcbEmployeeIdActionPerformed
 
@@ -369,7 +370,9 @@ public class AddDoctorFrame extends javax.swing.JFrame {
         }
         if(c!=null){
             JOptionPane.showMessageDialog(null, c);
+            return;
         }
+        
         String encPassword=EncryptData.encryptString(password1);
         UserPojo user=new UserPojo(loginId,txtDoctorName.getText(),encPassword,"DOCTOR");
         DoctorsPojo doctor=new DoctorsPojo(txtDoctorId.getText(),txtDoctorName.getText(),emailId, contactNumber,qualification,(jcbGender.getSelectedItem()).toString(),special);
@@ -382,11 +385,9 @@ public class AddDoctorFrame extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         if(pass1 && pass2){
+            map.remove(jcbEmployeeId.getSelectedItem().toString());
             jcbEmployeeId.removeItem(jcbEmployeeId.getSelectedItem());
-            if(jcbEmployeeId.getItemCount()==0){
-                new ManageDoctorsFrame().setVisible(true);
-                this.dispose();
-            }
+            
             txtDoctorName.setText("");
             txtDoctorName.requestFocus();
             txtLoginId.setText("");
@@ -397,6 +398,12 @@ public class AddDoctorFrame extends javax.swing.JFrame {
             txtEmailId.setText("");
             txtQualification.setText("");
             txtSpecial.setText("");
+            if(jcbEmployeeId.getItemCount()==0){
+                JOptionPane.showMessageDialog(null, "No more doctors to add");
+                new ManageDoctorsFrame().setVisible(true);
+                this.dispose();
+                return;
+            }
             JOptionPane.showMessageDialog(null, "Doctor successfully added");
         }
         else JOptionPane.showMessageDialog(null, "Doctor can not be added at the moment");
@@ -485,9 +492,11 @@ public class AddDoctorFrame extends javax.swing.JFrame {
         }
         if(jcbEmployeeId.getItemCount()==0){
             JOptionPane.showMessageDialog(null, "No doctors found which are unregistered");
-            new ManageDoctorsFrame().setVisible(true);
-            this.dispose();
+            
+            return;
         }
+        
+        
     }
 
     private void loadNextDoctorId() {

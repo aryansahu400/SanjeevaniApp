@@ -138,10 +138,11 @@ public class EmpDao {
         Map<String,String> map=new HashMap<>();
         Connection conn=DBConnection.getConnection();
         Statement ps=conn.createStatement();
-        ResultSet rs=ps.executeQuery("SELECT emp_id,emp_name FROM employees WHERE emp_department='DOCTOR' AND emp_name NOT IN (SELECT user_name FROM users WHERE user_type='DOCTOR' )");
+        ResultSet rs=ps.executeQuery("SELECT emp_id,emp_name FROM employees WHERE emp_department='DOCTOR' AND emp_name NOT IN (SELECT user_name FROM users WHERE user_type='DOCTOR' ) ORDER BY EMP_ID");
         while(rs.next()){
             map.put(rs.getString(1),rs.getString(2));
         }
+        System.out.println("From emo dao: "+map);
         return map;
     }
     

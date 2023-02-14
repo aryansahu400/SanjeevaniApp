@@ -7,7 +7,12 @@ package sanjeevaniapp.dao;
 import java.sql.Connection;
 import sanjeevaniapp.dbutil.DBConnection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import sanjeevaniapp.pojo.ReceptionistPojo;
 /**
  *
  * @author LENOVO
@@ -29,6 +34,46 @@ public class ReceptionistDao {
         PreparedStatement ps=conn.prepareStatement("DELETE FROM receptionists where receptionist_name=?");
         ps.setString(1,empName);
         ps.executeUpdate();
+    }
+    
+    public static String getNewReceptionistId() throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        Statement s=conn.createStatement();
+        ResultSet rs=s.executeQuery("Select max(Receptionist_ID) FROM Receptionists");
+        String id=null;
+        rs.next();
+        if(rs.getString(1)==null){
+            return "REC101";
+        }else{
+            int n=Integer.parseInt(rs.getString(1).substring(3))+1;
+            return "DOC"+n;
+        }
+    }
+    
+    public static boolean addReceptionist(ReceptionistPojo rec) throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("Insert into receptionists values(?,?,?)");
+        ps.setString(1, rec.getReceptionistId());
+        ps.setString(2, rec.getReceptionistName());
+        ps.setString(3, rec.getGender());
+        return ps.executeUpdate()==1;
+    }
+    
+    public static List<ReceptionistPojo> getAllreceptonistDetails() throws SQLException{
+        List<ReceptionistPojo> list=new ArrayList<>();
+        Connection conn=DBConnection.getConnection();
+        Statement s= conn.createStatement();
+        ResultSet rs=s.executeQuery("Select * from Receptionists order by Receptionist_id");
+        while(rs.next()){
+            ReceptionistPojo doctor=new ReceptionistPojo();
+            doctor.setReceptionistName(rs.getString("Receptionist_name"));
+            doctor.setReceptionistId(rs.getString("Receptionist_id"));
+            doctor.setGender(rs.getString("gender"));
+            
+            list.add(doctor);
+            
+        }
+        return list;
     }
     
 }

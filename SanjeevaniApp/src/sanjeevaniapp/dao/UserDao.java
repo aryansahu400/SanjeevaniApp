@@ -49,7 +49,21 @@ public class UserDao {
         ps.setString(4, user.getUserType());
         return ps.executeUpdate()==1;
     }
-    
+    public static String getLoginIdByName(String userName)throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("SELECT login_id from users where user_name=?");
+        ps.setString(1, userName);
+        ResultSet rs=ps.executeQuery();
+        rs.next();
+        return rs.getString(1);
+    }
+    public static boolean updateLoginIdByName(String userName,String loginId)throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("UPDATE USERS SET LOGIN_ID=? where USER_NAME=?");
+        ps.setString(1,loginId);
+        ps.setString(2,userName);
+        return ps.executeUpdate()==1;
+    }
     
      
 }

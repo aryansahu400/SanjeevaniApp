@@ -97,5 +97,23 @@ public class ReceptionistDao {
         ps.setString(1, receptionistId);
         return ps.executeUpdate()==1;
     }
-    
+    public static ReceptionistPojo getReceptonistDetailsById(String id) throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement s=conn.prepareStatement("SELECT * FROM Receptionists WHERE receptionist_id=?");
+        s.setString(1, id);
+        ResultSet rs=s.executeQuery();
+        rs.next();
+        ReceptionistPojo receptionist=new ReceptionistPojo();
+        receptionist.setReceptionistName(rs.getString("Receptionist_name"));
+        receptionist.setReceptionistId(rs.getString("Receptionist_id"));
+        receptionist.setGender(rs.getString("gender"));
+        return  receptionist;
+    }
+    public static boolean updateGenderById(String id, String gender)throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("UPDATE RECEPTIONISTS SET GENDER=? where RECEPTIONIST_ID=?");
+        ps.setString(1,gender);
+        ps.setString(2,id);
+        return ps.executeUpdate()==1;
+    }
 }

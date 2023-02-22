@@ -46,7 +46,7 @@ public class ReceptionistDao {
             return "REC101";
         }else{
             int n=Integer.parseInt(rs.getString(1).substring(3))+1;
-            return "DOC"+n;
+            return "REC"+n;
         }
     }
     
@@ -74,6 +74,28 @@ public class ReceptionistDao {
             
         }
         return list;
+    }
+    public static List<String> getAllReceptionistIds()throws SQLException{
+        List<String> list=new ArrayList<>();
+        Connection conn=DBConnection.getConnection();
+        Statement s=conn.createStatement();
+        ResultSet rs=s.executeQuery("Select RECEPTIONIST_ID from receptionists");
+        while(rs.next()){
+            list.add(rs.getString(1));
+        }
+        return list;
+    }
+    
+    public static boolean removeReceptionistById(String receptionistId) throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("Select receptionist_name from receptionists where receptionist_id=?");
+        
+        ps.setString(1,receptionistId);
+        ResultSet rs=ps.executeQuery();
+        while(rs.next())UserDao.removeUser(rs.getString(1));
+        ps=conn.prepareStatement("DELETE FROM receptionists where receptionist_id=?");
+        ps.setString(1, receptionistId);
+        return ps.executeUpdate()==1;
     }
     
 }

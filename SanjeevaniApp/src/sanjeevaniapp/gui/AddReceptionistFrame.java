@@ -288,8 +288,8 @@ public class AddReceptionistFrame extends javax.swing.JFrame {
     private void jcbEmployeeId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEmployeeId1ActionPerformed
         if(jcbEmployeeId1.getSelectedIndex()==-1){
             JOptionPane.showMessageDialog(null, "All receptionists added");
-            new ManageReceptionistsFrame().setVisible(true);
-            this.dispose();
+//            new ManageReceptionistsFrame().setVisible(true);
+//            this.dispose();
             return;
         }
         String id=jcbEmployeeId1.getSelectedItem().toString();

@@ -154,6 +154,11 @@ public class AdminOptionFrame extends javax.swing.JFrame {
         btnManageReceptionist.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnManageReceptionist.setText("Manage Receptionist");
         btnManageReceptionist.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnManageReceptionist.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageReceptionistActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout utilityPanelLayout = new javax.swing.GroupLayout(utilityPanel);
         utilityPanel.setLayout(utilityPanelLayout);
@@ -253,6 +258,11 @@ public class AdminOptionFrame extends javax.swing.JFrame {
         new ManageDoctorsFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnManageDoctorActionPerformed
+
+    private void btnManageReceptionistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageReceptionistActionPerformed
+        new ManageReceptionistsFrame().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnManageReceptionistActionPerformed
 
     /**
      * @param args the command line arguments

@@ -35,9 +35,9 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         lblName = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
-        btnRemoveEmployee = new javax.swing.JButton();
-        btnAddEmployee = new javax.swing.JButton();
-        btnViewEmployee = new javax.swing.JButton();
+        btnRemoveReceptionist = new javax.swing.JButton();
+        btnAddReceptionist = new javax.swing.JButton();
+        btnViewReceptionist = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
@@ -89,33 +89,33 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        btnRemoveEmployee.setBackground(new java.awt.Color(0, 204, 204));
-        btnRemoveEmployee.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
-        btnRemoveEmployee.setText("Remove Doctors");
-        btnRemoveEmployee.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
-        btnRemoveEmployee.addActionListener(new java.awt.event.ActionListener() {
+        btnRemoveReceptionist.setBackground(new java.awt.Color(0, 204, 204));
+        btnRemoveReceptionist.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
+        btnRemoveReceptionist.setText("Remove Receptionists");
+        btnRemoveReceptionist.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnRemoveReceptionist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoveEmployeeActionPerformed(evt);
+                btnRemoveReceptionistActionPerformed(evt);
             }
         });
 
-        btnAddEmployee.setBackground(new java.awt.Color(0, 204, 204));
-        btnAddEmployee.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
-        btnAddEmployee.setText("Add Doctor");
-        btnAddEmployee.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
-        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
+        btnAddReceptionist.setBackground(new java.awt.Color(0, 204, 204));
+        btnAddReceptionist.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
+        btnAddReceptionist.setText("Add Receptionist");
+        btnAddReceptionist.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnAddReceptionist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddEmployeeActionPerformed(evt);
+                btnAddReceptionistActionPerformed(evt);
             }
         });
 
-        btnViewEmployee.setBackground(new java.awt.Color(0, 204, 204));
-        btnViewEmployee.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
-        btnViewEmployee.setText("View Doctors");
-        btnViewEmployee.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
-        btnViewEmployee.addActionListener(new java.awt.event.ActionListener() {
+        btnViewReceptionist.setBackground(new java.awt.Color(0, 204, 204));
+        btnViewReceptionist.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
+        btnViewReceptionist.setText("View Receptionists");
+        btnViewReceptionist.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnViewReceptionist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnViewEmployeeActionPerformed(evt);
+                btnViewReceptionistActionPerformed(evt);
             }
         });
 
@@ -161,11 +161,11 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(utilityPanelLayout.createSequentialGroup()
-                            .addComponent(btnAddEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAddReceptionist, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(96, 96, 96)
-                            .addComponent(btnViewEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnViewReceptionist, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRemoveEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnRemoveReceptionist, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(59, 59, 59))
         );
@@ -183,9 +183,9 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58)
                         .addGroup(utilityPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnRemoveEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnViewEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAddEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnRemoveReceptionist, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnViewReceptionist, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAddReceptionist, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBack)
                         .addGap(23, 23, 23))))
@@ -235,20 +235,20 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    private void btnRemoveEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveEmployeeActionPerformed
-        new RemoveDoctorFrame().setVisible(true);
+    private void btnRemoveReceptionistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveReceptionistActionPerformed
+        new RemoveReceptionistFrame().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnRemoveEmployeeActionPerformed
+    }//GEN-LAST:event_btnRemoveReceptionistActionPerformed
 
-    private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
-        new AddDoctorFrame().setVisible(true);
+    private void btnAddReceptionistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddReceptionistActionPerformed
+        new AddReceptionistFrame().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnAddEmployeeActionPerformed
+    }//GEN-LAST:event_btnAddReceptionistActionPerformed
 
-    private void btnViewEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewEmployeeActionPerformed
-        new ViewDoctorsFrame().setVisible(true);
+    private void btnViewReceptionistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewReceptionistActionPerformed
+        new ViewReceptionistFrame().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnViewEmployeeActionPerformed
+    }//GEN-LAST:event_btnViewReceptionistActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         new AdminOptionFrame().setVisible(true);
@@ -291,11 +291,11 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddEmployee;
+    private javax.swing.JButton btnAddReceptionist;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JButton btnRemoveEmployee;
-    private javax.swing.JButton btnViewEmployee;
+    private javax.swing.JButton btnRemoveReceptionist;
+    private javax.swing.JButton btnViewReceptionist;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;

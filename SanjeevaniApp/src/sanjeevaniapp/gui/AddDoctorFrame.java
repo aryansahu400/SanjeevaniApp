@@ -354,7 +354,7 @@ public class AddDoctorFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void jcbEmployeeIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbEmployeeIdActionPerformed
-        
+        if(jcbEmployeeId.getSelectedIndex()==-1)return;
         txtDoctorName.setText(map.get(jcbEmployeeId.getSelectedItem().toString()));
     }//GEN-LAST:event_jcbEmployeeIdActionPerformed
 

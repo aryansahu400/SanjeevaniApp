@@ -5,7 +5,7 @@
 package sanjeevaniapp.gui;
 
 import javax.swing.JOptionPane;
-import sanjeevaniapp.dbutil.UserProfile;
+import sanjeevaniapp.util.UserProfile;
 
 /**
  *

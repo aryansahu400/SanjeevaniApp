@@ -4,7 +4,7 @@
  */
 package sanjeevaniapp.gui;
 
-import sanjeevaniapp.dbutil.UserProfile;
+import sanjeevaniapp.util.UserProfile;
 
 /**
  *

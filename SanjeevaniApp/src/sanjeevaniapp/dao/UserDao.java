@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import sanjeevaniapp.dbutil.DBConnection;
+import sanjeevaniapp.util.DBConnection;
 import sanjeevaniapp.pojo.User;
 import sanjeevaniapp.pojo.UserPojo;
 
@@ -18,9 +18,9 @@ public class UserDao {
         ps.setString(3, user.getUserType());
         ResultSet rs=ps.executeQuery();
         String name=null;
-        if(rs.next()){
-            name=rs.getString("user_name");
-        }
+        rs.next();
+         name=rs.getString(1);
+        
         return name;
     }
 

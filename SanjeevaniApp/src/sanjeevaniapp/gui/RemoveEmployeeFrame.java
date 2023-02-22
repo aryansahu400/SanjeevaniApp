@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import sanjeevaniapp.dao.EmpDao;
-import sanjeevaniapp.dbutil.UserProfile;
+import sanjeevaniapp.util.UserProfile;
 import sanjeevaniapp.pojo.EmployeePojo;
 
 /**

@@ -1,4 +1,4 @@
-package sanjeevaniapp.dbutil;
+package sanjeevaniapp.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

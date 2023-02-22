@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import sanjeevaniapp.dao.EmpDao;
 import sanjeevaniapp.dao.ReceptionistDao;
 import sanjeevaniapp.dao.UserDao;
-import sanjeevaniapp.dbutil.EncryptData;
+import sanjeevaniapp.util.EncryptData;
 import sanjeevaniapp.pojo.ReceptionistPojo;
 import sanjeevaniapp.pojo.UserPojo;
 

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import sanjeevaniapp.dao.DoctorsDao;
 import sanjeevaniapp.dao.EmpDao;
 import sanjeevaniapp.dao.UserDao;
-import sanjeevaniapp.dbutil.EncryptData;
+import sanjeevaniapp.util.EncryptData;
 import sanjeevaniapp.pojo.DoctorsPojo;
 import sanjeevaniapp.pojo.UserPojo;
 

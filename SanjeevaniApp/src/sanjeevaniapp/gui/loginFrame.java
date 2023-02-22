@@ -5,12 +5,12 @@
 package sanjeevaniapp.gui;
 
 import javax.swing.JOptionPane;
-import sanjeevaniapp.dbutil.EncryptData;
+import sanjeevaniapp.util.EncryptData;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import sanjeevaniapp.dao.UserDao;
-import sanjeevaniapp.dbutil.DBConnection;
-import sanjeevaniapp.dbutil.UserProfile;
+import sanjeevaniapp.util.DBConnection;
+import sanjeevaniapp.util.UserProfile;
 import sanjeevaniapp.pojo.User;
 
 /**
@@ -224,6 +224,7 @@ public class LoginFrame extends javax.swing.JFrame {
         try{
             User user=new User();
             user.setLoginId(loginId);
+           
             user.setPassword(password);
             user.setUserType(userType);
             String userName=UserDao.validateUser(user);
@@ -247,6 +248,8 @@ public class LoginFrame extends javax.swing.JFrame {
                 this.dispose();
                 return;
             }
+            
+            
             JOptionPane.showMessageDialog(null,"INVALID CREDENTAILS");
             
         }catch(SQLException e){
@@ -324,17 +327,17 @@ public class LoginFrame extends javax.swing.JFrame {
             return false;
         }else{
             password=new String(EncryptData.encryptString(new String(pwd)));
-            System.out.println(password);
+            
             return true;
         }
     }
     private String getUserType() {
         if(jrbAdmin.isSelected())
-            return jrbAdmin.getText();
+            return jrbAdmin.getText().toUpperCase();
         else if(jrbDoctor.isSelected())
-            return jrbDoctor.getText();
+            return jrbDoctor.getText().toUpperCase();
         else if(jrbReceptionist.isSelected())
-            return jrbReceptionist.getText();
+            return jrbReceptionist.getText().toUpperCase();
         return null;
     }
 }

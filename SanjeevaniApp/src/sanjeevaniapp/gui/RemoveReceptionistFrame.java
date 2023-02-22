@@ -10,7 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sanjeevaniapp.dao.ReceptionistDao;
-import sanjeevaniapp.dbutil.UserProfile;
+import sanjeevaniapp.util.UserProfile;
 
 /**
  *

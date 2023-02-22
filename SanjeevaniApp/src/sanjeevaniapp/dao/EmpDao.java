@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import sanjeevaniapp.dbutil.DBConnection;
+import sanjeevaniapp.util.DBConnection;
 import sanjeevaniapp.pojo.EmployeePojo;
 
 /**

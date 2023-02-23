@@ -5,9 +5,10 @@
 package sanjeevaniapp.gui;
 
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import sanjeevaniapp.dao.DoctorsDao;
 import sanjeevaniapp.dao.PatientDao;
@@ -17,15 +18,13 @@ import sanjeevaniapp.pojo.PatientPojo;
  *
  * @author LENOVO
  */
-public class AddPatientFrame extends javax.swing.JFrame {
+public class UpdatePatientFrame extends javax.swing.JFrame {
     PatientPojo patient;
     Date date;
-    public AddPatientFrame() {
+    
+    public UpdatePatientFrame() {
         initComponents();
-        loadDoctorIds();
-        LoadNewPatientId();
-        loadDate();
-        patient=new PatientPojo();
+        loadIds();
     }
 
     /**
@@ -49,7 +48,6 @@ public class AddPatientFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtCity = new javax.swing.JTextField();
         txtAge = new javax.swing.JTextField();
-        txtPatientId = new javax.swing.JTextField();
         jcbDoctorId = new javax.swing.JComboBox<>();
         txtOpd = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -65,17 +63,17 @@ public class AddPatientFrame extends javax.swing.JFrame {
         txtLastName = new javax.swing.JTextField();
         txtFirstName = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
+        jcbPatientId = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAddress = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
         btnHome = new javax.swing.JButton();
-        btnAdd = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,9 +112,6 @@ public class AddPatientFrame extends javax.swing.JFrame {
         txtCity.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         txtAge.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-
-        txtPatientId.setEditable(false);
-        txtPatientId.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         jcbDoctorId.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jcbDoctorId.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +159,13 @@ public class AddPatientFrame extends javax.swing.JFrame {
         jTextField1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jTextField1.setText("+91");
 
+        jcbPatientId.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jcbPatientId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbPatientIdActionPerformed(evt);
+            }
+        });
+
         txtAddress.setColumns(20);
         txtAddress.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txtAddress.setRows(5);
@@ -185,10 +187,10 @@ public class AddPatientFrame extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtOpd, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
-                    .addComponent(txtPatientId, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                     .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                     .addComponent(jcbDoctorId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtCity)
+                    .addComponent(jcbPatientId, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addGap(52, 52, 52)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,9 +264,9 @@ public class AddPatientFrame extends javax.swing.JFrame {
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jcbDoctorId, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPatientId, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                            .addComponent(jcbPatientId))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,14 +278,14 @@ public class AddPatientFrame extends javax.swing.JFrame {
                         .addGap(31, 31, 31)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37))))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 1170, 410));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
-        jLabel3.setText("Add Patient");
+        jLabel3.setText("Update Patient");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sanjeevaniapp/gui/Reception_Image.png"))); // NOI18N
@@ -308,14 +310,14 @@ public class AddPatientFrame extends javax.swing.JFrame {
         });
         jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 390, 170, -1));
 
-        btnAdd.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        btnAdd.setText("Add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+        btnUpdate.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
+                btnUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 680, 170, -1));
+        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 680, 170, -1));
 
         btnBack.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnBack.setText("Back");
@@ -326,7 +328,26 @@ public class AddPatientFrame extends javax.swing.JFrame {
         });
         jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1262, 720, 80, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 800));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1540, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -335,44 +356,81 @@ public class AddPatientFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jcbDoctorIdActionPerformed
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        new LoginFrame().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
-       new ReceptionistOptionFrame().setVisible(true);
-       this.dispose();
+        new ReceptionistOptionFrame().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        String valid=validateInputs();
+        if(valid!=null){
+            JOptionPane.showMessageDialog(null, valid);
+            return;
+        }
+        patient.setAddress(this.txtAddress.getText());
+        patient.setAge(Integer.parseInt(this.txtAge.getText()));
+        patient.setCity(this.txtCity.getText());
+        patient.setDate((patient.getDate()));
+        patient.setDoctorId(this.jcbDoctorId.getSelectedItem().toString());
+        patient.setFirstName(this.txtFirstName.getText());
+        patient.setGender(this.jcbGender.getSelectedItem().toString());
+        patient.setLastname(this.txtLastName.getText());
+        patient.setMobileNo(this.txtPhoneNumber.getText());
+        patient.setOpd(this.txtOpd.getText());
+        patient.setPatientId(this.jcbPatientId.getSelectedItem().toString());
+        patient.setmStatus(this.jcbMartialStatus.getSelectedItem().toString());
+
+        
+        try {
+            if(PatientDao.updatePatient(patient)){
+                JOptionPane.showMessageDialog(null,"Patient Updated Successfully","Success", JOptionPane.INFORMATION_MESSAGE);
+                
+            }else{
+                JOptionPane.showMessageDialog(null,"Can not update at the moment, PLEASE TRY AGAIN","TRY AGAIN", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Database Error in update Patient Frame: "+ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+            return;
+        }
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         new ReceptionistOptionFrame().setVisible(true);
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
-        new LoginFrame().setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_btnLogoutActionPerformed
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-       String valid=validateInputs();
-       if(valid!=null){
-           JOptionPane.showMessageDialog(null, valid);
-           return;
-       }
-       patient.setAddress(this.txtAddress.getText());
-       patient.setAge(Integer.parseInt(this.txtAge.getText()));
-       patient.setCity(this.txtCity.getText());
-       patient.setDate(new java.sql.Date(date.getTime()));
-       patient.setDoctorId(this.jcbDoctorId.getSelectedItem().toString());
-       patient.setFirstName(this.txtFirstName.getText());
-       patient.setGender(this.jcbGender.getSelectedItem().toString());
-       patient.setLastname(this.txtLastName.getText());
-       patient.setMobileNo(this.txtPhoneNumber.getText());
-       patient.setOpd(this.txtOpd.getText());
-       patient.setPatientId(this.txtPatientId.getText());
-       patient.setmStatus(this.jcbMartialStatus.getSelectedItem().toString());
-       
-       new VerifyOtpFrame(patient).setVisible(true);
-       this.dispose();
-    }//GEN-LAST:event_btnAddActionPerformed
+    private void jcbPatientIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbPatientIdActionPerformed
+        if(this.jcbPatientId.getSelectedIndex()==-1)return;
+        String patientID=this.jcbPatientId.getSelectedItem().toString();
+        try {        
+            patient=PatientDao.loadPatientDetails(patientID);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Database Error in update Patient Frame: "+ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+            return;
+        }
+        this.txtOpd.setText(patient.getOpd());
+        this.txtAge.setText(String.valueOf(patient.getAge()));
+        this.txtCity.setText(patient.getCity());
+        this.txtAddress.setText(patient.getAddress());
+        this.txtFirstName.setText(patient.getFirstName());
+        this.txtLastName.setText(patient.getLastname());
+        this.txtDate.setText(patient.getDate().toString());
+        this.txtPhoneNumber.setText(patient.getMobileNo());
+        String doctorId=patient.getDoctorId();
+        this.jcbDoctorId.setSelectedItem(doctorId);
+        
+        
+        
+    }//GEN-LAST:event_jcbPatientIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,30 +449,32 @@ public class AddPatientFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddPatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdatePatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddPatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdatePatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddPatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdatePatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddPatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UpdatePatientFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddPatientFrame().setVisible(true);
+                new UpdatePatientFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -438,6 +498,7 @@ public class AddPatientFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jcbDoctorId;
     private javax.swing.JComboBox<String> jcbGender;
     private javax.swing.JComboBox<String> jcbMartialStatus;
+    private javax.swing.JComboBox<String> jcbPatientId;
     private javax.swing.JTextArea txtAddress;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtCity;
@@ -445,41 +506,29 @@ public class AddPatientFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextField txtOpd;
-    private javax.swing.JTextField txtPatientId;
     private javax.swing.JTextField txtPhoneNumber;
     // End of variables declaration//GEN-END:variables
 
-    private void loadDoctorIds() {
+    private void loadIds() {
         List<String> list=null;
         try {
             list=DoctorsDao.getAllDoctorIds();
+            for(String doctor: list){
+            this.jcbDoctorId.addItem(doctor);
+            }
+            list=PatientDao.getAllIds();
+            for(String patient:list){
+                this.jcbPatientId.addItem(patient);
+            }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Databsae error in Add Patient Frame: "+ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Database Error in update ReceptionistFrame: "+ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
         }
-        for(String id:list){
-            this.jcbDoctorId.addItem(id);
-        }
-    }
-
-    private void LoadNewPatientId() {
-        try {
-            this.txtPatientId.setText(PatientDao.getNextId());
-        } catch (SQLException ex) { 
-            JOptionPane.showMessageDialog(null, "Databsae error in Add Patient Frame: "+ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
-        }
-    }
-
-    private void loadDate() {
-        date=new Date();
-        this.txtDate.setText(date.toString());
-        SimpleDateFormat sdf=new SimpleDateFormat("dd-mm-yyyy");
-        this.txtDate.setText(sdf.format(date));
+        
     }
     
     public String validateInputs(){
-        if(txtAddress.getText().trim().isEmpty() ||txtAge.getText().trim().isEmpty() || txtCity.getText().trim().isEmpty() || txtFirstName.getText().trim().isEmpty() || txtLastName.getText().trim().isEmpty()||txtOpd.getText().trim().isEmpty()||txtPatientId.getText().trim().isEmpty()||txtPhoneNumber.getText().trim().isEmpty()){ 
+        if(txtAddress.getText().trim().isEmpty() ||txtAge.getText().trim().isEmpty() || txtCity.getText().trim().isEmpty() || txtFirstName.getText().trim().isEmpty() || txtLastName.getText().trim().isEmpty()||txtOpd.getText().trim().isEmpty()||txtPhoneNumber.getText().trim().isEmpty()){ 
             return "Please fill all the fields";
         }
         String number=txtPhoneNumber.getText().trim();

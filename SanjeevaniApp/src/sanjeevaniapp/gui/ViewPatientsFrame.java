@@ -4,10 +4,12 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import sanjeevaniapp.dao.PatientDao;
 import sanjeevaniapp.pojo.PatientPojo;
+import sanjeevaniapp.util.UserProfile;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -44,6 +46,7 @@ public class ViewPatientsFrame extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         btnhome = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +103,13 @@ public class ViewPatientsFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel1.setText("View all patient details");
 
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -109,6 +119,8 @@ public class ViewPatientsFrame extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnhome, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,11 +131,10 @@ public class ViewPatientsFrame extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLogout)
-                            .addComponent(btnhome))
-                        .addGap(18, 18, 18))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnLogout)
+                        .addComponent(btnhome)
+                        .addComponent(btnBack))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(9, 9, 9)))
@@ -171,10 +182,32 @@ public class ViewPatientsFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void btnhomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhomeActionPerformed
-        new AdminOptionFrame().setVisible(true);
+        JFrame optionFrame=null;
+        if(UserProfile.getUserType().equalsIgnoreCase("ADMIN")){
+            optionFrame=new AdminOptionFrame();
+        }else if(UserProfile.getUserType().equalsIgnoreCase("RECEPTIONIST")){
+            optionFrame=new ReceptionistOptionFrame();
+        }else if(UserProfile.getUserType().equalsIgnoreCase("DOCTOR")){
+            optionFrame=new DoctorsOptionFrame();
+        }
+        optionFrame.setVisible(true);
         this.dispose();
         return;
     }//GEN-LAST:event_btnhomeActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        JFrame optionFrame=null;
+        if(UserProfile.getUserType().equalsIgnoreCase("ADMIN")){
+            optionFrame=new AdminOptionFrame();
+        }else if(UserProfile.getUserType().equalsIgnoreCase("RECEPTIONIST")){
+            optionFrame=new PatientDetailsFrame();
+        }else if(UserProfile.getUserType().equalsIgnoreCase("DOCTOR")){
+            optionFrame=new DoctorsOptionFrame();
+        }
+        optionFrame.setVisible(true);
+        this.dispose();
+        return;
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,6 +245,7 @@ public class ViewPatientsFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnhome;
     private javax.swing.JLabel jLabel1;

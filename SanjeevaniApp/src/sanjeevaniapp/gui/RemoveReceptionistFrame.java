@@ -53,6 +53,7 @@ public class RemoveReceptionistFrame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -70,6 +71,7 @@ public class RemoveReceptionistFrame extends javax.swing.JFrame {
 
         btnLogout.setFont(new java.awt.Font("Times New Roman", 0, 22)); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -78,6 +80,7 @@ public class RemoveReceptionistFrame extends javax.swing.JFrame {
 
         btnHome.setFont(new java.awt.Font("Times New Roman", 0, 22)); // NOI18N
         btnHome.setText("Home");
+        btnHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnHome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHomeActionPerformed(evt);

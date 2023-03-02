@@ -52,6 +52,7 @@ public class RemoveEmployeeFrame extends javax.swing.JFrame {
         utilityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Update Employee"), "Remove Employee", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
 
         btnBack.setText("BACK");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -65,6 +66,7 @@ public class RemoveEmployeeFrame extends javax.swing.JFrame {
 
         btnRemoveEmployee.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         btnRemoveEmployee.setText("Remove Employee");
+        btnRemoveEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRemoveEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveEmployeeActionPerformed(evt);
@@ -72,11 +74,13 @@ public class RemoveEmployeeFrame extends javax.swing.JFrame {
         });
 
         btnLogout.setText("logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jcbEmployeeId.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jcbEmployeeId.setMaximumRowCount(3);
 
         jButton1.setText("Home");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout utilityPanelLayout = new javax.swing.GroupLayout(utilityPanel);
         utilityPanel.setLayout(utilityPanelLayout);

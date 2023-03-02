@@ -4,17 +4,25 @@
  */
 package sanjeevaniapp.gui;
 
+import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import sanjeevaniapp.dao.AppointmentDao;
+import sanjeevaniapp.pojo.AppointmentPojo;
+import sanjeevaniapp.util.UserProfile;
+
 /**
  *
  * @author LENOVO
  */
 public class ViewConfirmedAppointmentsRequestFrame extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ViewConfirmedAppointmentsRequestFrame
-     */
+    
     public ViewConfirmedAppointmentsRequestFrame() {
         initComponents();
+        loaddetails();
     }
 
     /**
@@ -76,6 +84,7 @@ public class ViewConfirmedAppointmentsRequestFrame extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jButton1.setText("Back");
         jButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -85,6 +94,7 @@ public class ViewConfirmedAppointmentsRequestFrame extends javax.swing.JFrame {
         btnLogiut.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnLogiut.setText("Logout");
         btnLogiut.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
+        btnLogiut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogiut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogiutActionPerformed(evt);
@@ -207,4 +217,24 @@ public class ViewConfirmedAppointmentsRequestFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    private void loaddetails() {
+        List<AppointmentPojo> list=null;
+        try {
+            list=AppointmentDao.getConfirmedAppointmentsByDoctorName(UserProfile.getUsername());
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "database Error in View Confirmed Apoointments frame: "+ex.getMessage(),"ERROR", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+            return;
+        }
+        DefaultTableModel model=(DefaultTableModel)this.jTable1.getModel();
+        for(AppointmentPojo appointment:list){
+            Object[] arr=new Object[4];
+            arr[0]=appointment.getPatientId();
+            arr[1]=appointment.getPatientName();
+            arr[2]=appointment.getOPD();
+            arr[3]=appointment.getDateTime();
+            model.addRow(arr);
+        }
+    }
 }

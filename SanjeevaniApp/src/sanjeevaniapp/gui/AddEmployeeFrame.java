@@ -55,6 +55,7 @@ public class AddEmployeeFrame extends javax.swing.JFrame {
         utilityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2), "Employee Details", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
 
         btnBack.setText("BACK");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -75,7 +76,7 @@ public class AddEmployeeFrame extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         jLabel5.setText("Salary");
 
-        jcbEmployeeJob.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        jcbEmployeeJob.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jcbEmployeeJob.setMaximumRowCount(3);
         jcbEmployeeJob.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "Doctor", "Receptionist", " " }));
         jcbEmployeeJob.addActionListener(new java.awt.event.ActionListener() {
@@ -85,13 +86,14 @@ public class AddEmployeeFrame extends javax.swing.JFrame {
         });
 
         txtEmployeeSal.setBackground(new java.awt.Color(204, 224, 251));
-        txtEmployeeSal.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        txtEmployeeSal.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         txtEmployeeId.setEditable(false);
         txtEmployeeId.setBackground(new java.awt.Color(204, 224, 251));
+        txtEmployeeId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         txtEmployeeName.setBackground(new java.awt.Color(204, 224, 251));
-        txtEmployeeName.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        txtEmployeeName.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txtEmployeeName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmployeeNameActionPerformed(evt);
@@ -99,6 +101,7 @@ public class AddEmployeeFrame extends javax.swing.JFrame {
         });
 
         btnAddEmployee.setText("Add Employee");
+        btnAddEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddEmployeeActionPerformed(evt);
@@ -106,6 +109,7 @@ public class AddEmployeeFrame extends javax.swing.JFrame {
         });
 
         btnLogout.setText("logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);

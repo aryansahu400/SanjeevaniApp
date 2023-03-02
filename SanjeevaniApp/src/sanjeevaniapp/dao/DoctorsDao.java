@@ -20,6 +20,15 @@ import java.util.Set;
  */
 public class DoctorsDao {
 
+    public static String getNameById(String id)throws SQLException{
+        Connection conn=DBConnection.getConnection();
+       PreparedStatement ps=conn.prepareStatement("Select doctor_name from doctors where doctor_id=?");
+       ps.setString(1, id);
+       ResultSet rs=ps.executeQuery();
+       rs.next();
+           
+       return rs.getString(1);
+    }
     public static void updateDoctor(String currentName, String empName)throws SQLException {
         Connection conn=DBConnection.getConnection();
         PreparedStatement ps=conn.prepareStatement("UPDATE doctors SET doctor_name=? where doctor_name=?");

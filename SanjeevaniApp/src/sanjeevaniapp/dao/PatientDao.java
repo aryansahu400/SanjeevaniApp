@@ -9,6 +9,7 @@ import sanjeevaniapp.pojo.PatientPojo;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import sanjeevaniapp.pojo.AppointmentPojo;
 import sanjeevaniapp.util.DBConnection;
 
 public class PatientDao {
@@ -53,20 +54,11 @@ public class PatientDao {
     public static boolean insertRecord(PatientPojo patient)throws SQLException{
         Connection conn=DBConnection.getConnection();
         PreparedStatement ps=conn.prepareStatement("INSERT INTO PATIENTS VALUES(?,?,?, ?,?,?,?,?,?,?,?,?,?,?)");
-//        ps.setString(1, "PATIENT_ID");
-//        ps.setString(2,"FIRST_NAME");
-//        ps.setString(3,"LAST_NAME");
-//        ps.setString(4,"AGE");
-//        ps.setString(5,"GENDER");
-//        ps.setString(6, "M_STATUS");
-//        ps.setString(7, "ADDRESS");
-//        ps.setString(8, "CITY");
-//        ps.setString(9, "MOBILE_NO");
-//        ps.setString(10, "P_DATE");
-//        ps.setString(11, "OTP");
-//        ps.setString(12, "OPD");
-//        ps.setString(13, "DOCTOR_ID");
-        
+        String doctorName=DoctorsDao.getNameById(patient.getDoctorId());
+        AppointmentPojo appointment=new AppointmentPojo(patient.getPatientId(),patient.getFirstName()+" "+patient.getLastname(), "REQUEST", patient.getOpd(), patient.getDate().toString(), doctorName, patient.getMobileNo());
+        if(!AppointmentDao.addAppointment(appointment)){
+            throw new SQLException();
+        }
         
         ps.setString(1, patient.getPatientId());
         ps.setString(2, patient.getFirstName());
@@ -81,7 +73,7 @@ public class PatientDao {
         ps.setInt(11, patient.getOtp());
         ps.setString(12, patient.getOpd());
         ps.setString(13, patient.getDoctorId());
-        ps.setString(14,"null");
+        ps.setString(14,"REQUEST");
         
         return ps.executeUpdate()==1;
     }
@@ -90,20 +82,11 @@ public class PatientDao {
         Connection conn=DBConnection.getConnection();
         PreparedStatement ps=conn.prepareStatement("UPDATE PATIENTS SET PATIENT_ID=?,FIRST_NAME=?,LAST_NAME=?,AGE=?,GENDER=?,M_STATUS=?,ADDRESS=?,CITY=?,MOBILE_NO=?,"
                 + "P_DATE=?,OTP=?,OPD=?,DOCTOR_ID=? WHERE PATIENT_ID=?");
-//        ps.setString(1, "PATIENT_ID");
-//        ps.setString(3,"FIRST_NAME");
-//        ps.setString(5,"LAST_NAME");
-//        ps.setString(7,"AGE");
-//        ps.setString(9,"GENDER");
-//        ps.setString(11, "M_STATUS");
-//        ps.setString(13, "ADDRESS");
-//        ps.setString(15, "CITY");
-//        ps.setString(17, "MOBILE_NO");
-//        ps.setString(19, "P_DATE");
-//        ps.setString(21, "OTP");
-//        ps.setString(23, "OPD");
-//        ps.setString(25, "DOCTOR_ID");
-//        ps.setString(27, "STATUS");
+         String doctorName=DoctorsDao.getNameById(patient.getDoctorId());
+        AppointmentPojo appointment=new AppointmentPojo(patient.getPatientId(),patient.getFirstName()+" "+patient.getLastname(), "REQUEST", patient.getOpd(), patient.getDate().toString(), doctorName, patient.getMobileNo());
+        if(!AppointmentDao.addAppointment(appointment)){
+            throw new SQLException();
+        }
         
         
         ps.setString(1, patient.getPatientId());
@@ -166,8 +149,10 @@ public class PatientDao {
         
         Connection conn=DBConnection.getConnection();
         PreparedStatement ps=conn.prepareStatement("DELETE FROM patients where patient_id=?");
-        ps.setString(1,patientId);
-        return ps.executeUpdate()==1;
+        if(AppointmentDao.removeAppointment(patientId)){
+            ps.setString(1,patientId);
+            return ps.executeUpdate()==1;
+        }return false;
     }
         
     

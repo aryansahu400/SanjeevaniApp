@@ -188,6 +188,7 @@ public class AddReceptionistFrame extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         btnRegister.setText("Register");
+        btnRegister.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
@@ -219,6 +220,7 @@ public class AddReceptionistFrame extends javax.swing.JFrame {
         );
 
         btnLogout.setText("Logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -226,6 +228,7 @@ public class AddReceptionistFrame extends javax.swing.JFrame {
         });
 
         btnBack.setText("Back");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -394,51 +397,26 @@ public class AddReceptionistFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel baseImage;
     private javax.swing.JLabel baseImage1;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnRegister;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JComboBox<String> jcbEmployeeId;
     private javax.swing.JComboBox<String> jcbEmployeeId1;
-    private javax.swing.JComboBox<String> jcbGender;
     private javax.swing.JComboBox<String> jcbGender1;
-    private javax.swing.JLabel lblEmployeeId;
-    private javax.swing.JLabel lblEmployeeId1;
     private javax.swing.JLabel lblEmployeeId2;
-    private javax.swing.JTextField txtContactNumber;
-    private javax.swing.JTextField txtDoctorId;
-    private javax.swing.JTextField txtDoctorName;
-    private javax.swing.JTextField txtEmailId;
-    private javax.swing.JTextField txtLoginId;
     private javax.swing.JTextField txtLoginId1;
-    private javax.swing.JPasswordField txtPassword1;
-    private javax.swing.JPasswordField txtPassword2;
-    private javax.swing.JTextField txtQualification;
     private javax.swing.JTextField txtReceptionistId;
     private javax.swing.JTextField txtReceptionistName;
-    private javax.swing.JTextField txtSpecial;
     private javax.swing.JPasswordField txtpwd;
     private javax.swing.JPasswordField txtpwd2;
     // End of variables declaration//GEN-END:variables

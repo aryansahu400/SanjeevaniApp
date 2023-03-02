@@ -61,6 +61,7 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
 
         btnLogout.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -92,6 +93,7 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
         btnRemoveEmployee.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnRemoveEmployee.setText("Remove Employee");
         btnRemoveEmployee.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnRemoveEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRemoveEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveEmployeeActionPerformed(evt);
@@ -102,6 +104,7 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
         btnAddEmployee.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnAddEmployee.setText("Add Employee");
         btnAddEmployee.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnAddEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddEmployeeActionPerformed(evt);
@@ -112,6 +115,7 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
         btnViewEmployee.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnViewEmployee.setText("View Employee");
         btnViewEmployee.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnViewEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnViewEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewEmployeeActionPerformed(evt);
@@ -122,6 +126,7 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
         btnUpdateEmployee.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnUpdateEmployee.setText("Update Employee");
         btnUpdateEmployee.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnUpdateEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUpdateEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateEmployeeActionPerformed(evt);
@@ -150,6 +155,7 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
         );
 
         btnBack.setText("BACK");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);

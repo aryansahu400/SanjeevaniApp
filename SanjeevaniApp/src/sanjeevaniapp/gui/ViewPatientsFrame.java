@@ -87,6 +87,7 @@ public class ViewPatientsFrame extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jcTable);
 
         btnLogout.setText("Logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -94,6 +95,7 @@ public class ViewPatientsFrame extends javax.swing.JFrame {
         });
 
         btnhome.setText("Home");
+        btnhome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnhome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnhomeActionPerformed(evt);
@@ -104,6 +106,7 @@ public class ViewPatientsFrame extends javax.swing.JFrame {
         jLabel1.setText("View all patient details");
 
         btnBack.setText("Back");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);

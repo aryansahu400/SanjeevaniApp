@@ -65,6 +65,7 @@ public class ManageDoctorsFrame extends javax.swing.JFrame {
 
         btnLogout.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -96,6 +97,7 @@ public class ManageDoctorsFrame extends javax.swing.JFrame {
         btnRemoveEmployee.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnRemoveEmployee.setText("Remove Doctors");
         btnRemoveEmployee.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnRemoveEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRemoveEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveEmployeeActionPerformed(evt);
@@ -106,6 +108,7 @@ public class ManageDoctorsFrame extends javax.swing.JFrame {
         btnAddEmployee.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnAddEmployee.setText("Add Doctor");
         btnAddEmployee.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnAddEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddEmployeeActionPerformed(evt);
@@ -116,6 +119,7 @@ public class ManageDoctorsFrame extends javax.swing.JFrame {
         btnViewEmployee.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnViewEmployee.setText("View Doctors");
         btnViewEmployee.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnViewEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnViewEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewEmployeeActionPerformed(evt);
@@ -144,6 +148,7 @@ public class ManageDoctorsFrame extends javax.swing.JFrame {
         );
 
         btnBack.setText("BACK");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);

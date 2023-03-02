@@ -61,6 +61,7 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
         utilityPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Update Employee"), "Update Employee", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
 
         btnBack.setText("BACK");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -102,6 +103,7 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
         });
 
         btnAddEmployee.setText("Update Employee");
+        btnAddEmployee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddEmployeeActionPerformed(evt);
@@ -109,6 +111,7 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
         });
 
         btnLogout.setText("logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -124,6 +127,7 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
         });
 
         jButton1.setText("Home");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -268,7 +272,7 @@ public class UpdateEmployeeFrame extends javax.swing.JFrame {
         emp.setEmpSal(Double.parseDouble(txtEmployeeSal.getText().trim()));
         try{
             if(EmpDao.updateEmployee(emp)){ 
-                if(emp.getEmpDept().equalsIgnoreCase("admin") && UserProfile.getUsername()!=null){
+                if(emp.getEmpDept().equalsIgnoreCase("admin") && UserProfile.getUsername()==emp.getEmpName()){
                     UserProfile.setUsername(emp.getEmpName());
                 }
                 JOptionPane.showMessageDialog(null, "record added successfully!");

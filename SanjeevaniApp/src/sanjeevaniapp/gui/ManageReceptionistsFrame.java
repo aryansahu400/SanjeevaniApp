@@ -45,6 +45,7 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -63,6 +64,7 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
 
         btnLogout.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -104,6 +106,7 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
         btnAddReceptionist.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnAddReceptionist.setText("Add Receptionist");
         btnAddReceptionist.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnAddReceptionist.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAddReceptionist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddReceptionistActionPerformed(evt);
@@ -114,6 +117,7 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
         btnViewReceptionist.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnViewReceptionist.setText("View Receptionists");
         btnViewReceptionist.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnViewReceptionist.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnViewReceptionist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewReceptionistActionPerformed(evt);
@@ -142,6 +146,7 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
         );
 
         btnBack.setText("BACK");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);

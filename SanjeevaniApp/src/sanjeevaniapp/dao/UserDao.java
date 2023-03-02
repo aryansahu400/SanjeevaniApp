@@ -18,7 +18,7 @@ public class UserDao {
         ps.setString(3, user.getUserType());
         ResultSet rs=ps.executeQuery();
         String name=null;
-        rs.next();
+        while(rs.next())
          name=rs.getString(1);
         
         return name;

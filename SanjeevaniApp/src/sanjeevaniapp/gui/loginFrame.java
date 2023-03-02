@@ -95,6 +95,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         btnLogin.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnLogin.setText("Login");
+        btnLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -103,6 +104,7 @@ public class LoginFrame extends javax.swing.JFrame {
 
         btnQuit.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnQuit.setText("Quit");
+        btnQuit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnQuit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuitActionPerformed(evt);

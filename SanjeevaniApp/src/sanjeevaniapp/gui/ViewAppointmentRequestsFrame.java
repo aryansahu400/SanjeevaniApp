@@ -4,6 +4,13 @@
  */
 package sanjeevaniapp.gui;
 
+import java.util.List;
+import sanjeevaniapp.dao.AppointmentDao;
+import sanjeevaniapp.pojo.AppointmentPojo;
+import sanjeevaniapp.util.UserProfile;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author LENOVO
@@ -13,8 +20,14 @@ public class ViewAppointmentRequestsFrame extends javax.swing.JFrame {
     /**
      * Creates new form ViewAppointmentRequestsFrame
      */
+    List<AppointmentPojo> list;
+    private String doctorName;
+    private DefaultTableModel model;
+    
     public ViewAppointmentRequestsFrame() {
         initComponents();
+        model=(DefaultTableModel) this.jTable.getModel();
+        loadDetails();
     }
 
     /**
@@ -30,7 +43,7 @@ public class ViewAppointmentRequestsFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         btnLogiut = new javax.swing.JButton();
 
@@ -46,13 +59,10 @@ public class ViewAppointmentRequestsFrame extends javax.swing.JFrame {
 
         jScrollPane1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
-        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Patient ID", "Patient Name", "OPD", "Appointment date"
@@ -73,12 +83,18 @@ public class ViewAppointmentRequestsFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setRowHeight(35);
-        jScrollPane1.setViewportView(jTable1);
+        jTable.setRowHeight(35);
+        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable);
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jButton1.setText("Back");
         jButton1.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -88,6 +104,7 @@ public class ViewAppointmentRequestsFrame extends javax.swing.JFrame {
         btnLogiut.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnLogiut.setText("Logout");
         btnLogiut.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
+        btnLogiut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogiut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogiutActionPerformed(evt);
@@ -166,6 +183,13 @@ public class ViewAppointmentRequestsFrame extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
+        int index=this.jTable.getSelectedRow();
+        AppointmentPojo appointment=list.get(index);
+        new ConfirmAppointmentFrame(appointment).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jTableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -203,12 +227,32 @@ public class ViewAppointmentRequestsFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogiut;
-    private javax.swing.JButton btnLogout;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable;
     // End of variables declaration//GEN-END:variables
+
+    private void loadDetails() {
+        
+        
+        doctorName=UserProfile.getUsername();
+        try{
+            list=AppointmentDao.getAppointmentsByDoctorName(doctorName);
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Database error in view Appointment Resquest frame: "+ex.getMessage(), "ERROE", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+        }
+        for(AppointmentPojo appointment: list){
+            Object[] row=new Object[4];
+            row[0]=appointment.getPatientId();
+            row[1]=appointment.getPatientName();
+            row[2]=appointment.getOPD();
+            row[3]=appointment.getDateTime();
+            model.addRow(row);
+            
+        }
+    }
 }

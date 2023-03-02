@@ -102,6 +102,7 @@ public class AdminOptionFrame extends javax.swing.JFrame {
 
         btnLogout.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnLogout.setText("Logout");
+        btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogoutActionPerformed(evt);
@@ -132,10 +133,17 @@ public class AdminOptionFrame extends javax.swing.JFrame {
         btnManagePatient.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnManagePatient.setText("Manage Patients");
         btnManagePatient.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnManagePatient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnManagePatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManagePatientActionPerformed(evt);
+            }
+        });
 
         btnManageEmployees.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnManageEmployees.setText("Manage Employees");
         btnManageEmployees.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnManageEmployees.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnManageEmployees.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageEmployeesActionPerformed(evt);
@@ -145,6 +153,7 @@ public class AdminOptionFrame extends javax.swing.JFrame {
         btnManageDoctor.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnManageDoctor.setText("Manage Doctors");
         btnManageDoctor.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnManageDoctor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnManageDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageDoctorActionPerformed(evt);
@@ -154,6 +163,7 @@ public class AdminOptionFrame extends javax.swing.JFrame {
         btnManageReceptionist.setFont(new java.awt.Font("Times New Roman", 0, 32)); // NOI18N
         btnManageReceptionist.setText("Manage Receptionist");
         btnManageReceptionist.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        btnManageReceptionist.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnManageReceptionist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageReceptionistActionPerformed(evt);
@@ -263,6 +273,11 @@ public class AdminOptionFrame extends javax.swing.JFrame {
         new ManageReceptionistsFrame().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnManageReceptionistActionPerformed
+
+    private void btnManagePatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePatientActionPerformed
+        new ViewPatientsFrame().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnManagePatientActionPerformed
 
     /**
      * @param args the command line arguments

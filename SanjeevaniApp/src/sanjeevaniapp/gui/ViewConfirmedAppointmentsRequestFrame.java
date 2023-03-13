@@ -43,6 +43,8 @@ public class ViewConfirmedAppointmentsRequestFrame extends javax.swing.JFrame {
         btnLogiut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Confirmed Appointments");
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

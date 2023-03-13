@@ -45,6 +45,8 @@ public class ManageEmployeesFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Manage Employees");
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         utilityPanel.setBackground(new java.awt.Color(235, 243, 254));
         utilityPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));

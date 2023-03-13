@@ -49,6 +49,8 @@ public class AdminOptionFrame extends javax.swing.JFrame {
         btnManageReceptionist = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Options");
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         basePanel.setBackground(new java.awt.Color(255, 255, 255));
 

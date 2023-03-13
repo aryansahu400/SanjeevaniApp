@@ -42,6 +42,8 @@ public class PatientDetailsFrame extends javax.swing.JFrame {
         btnViewSinglePatient = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Patient Details");
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

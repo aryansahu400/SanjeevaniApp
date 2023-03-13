@@ -74,6 +74,8 @@ public class AddDoctorFrame extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ADD DOCTOR");
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

@@ -12,6 +12,7 @@ import sanjeevaniapp.dao.UserDao;
 import sanjeevaniapp.util.DBConnection;
 import sanjeevaniapp.util.UserProfile;
 import sanjeevaniapp.pojo.User;
+import sanjeevaniapp.util.ImageIconClass;
 
 /**
  *
@@ -23,6 +24,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private String loginId;
     public LoginFrame() {
         initComponents();
+        
     }
 
     /**
@@ -53,6 +55,8 @@ public class LoginFrame extends javax.swing.JFrame {
         btnQuit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sanjeevaniapp/gui/admin page.jpg"))); // NOI18N
 

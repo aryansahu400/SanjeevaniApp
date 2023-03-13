@@ -24,6 +24,7 @@ public class UpdatePatientFrame extends javax.swing.JFrame {
     
     public UpdatePatientFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
         loadIds();
     }
 
@@ -74,7 +75,9 @@ public class UpdatePatientFrame extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Update Patient");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -389,22 +392,28 @@ public class UpdatePatientFrame extends javax.swing.JFrame {
         patient.setPatientId(this.jcbPatientId.getSelectedItem().toString());
         patient.setmStatus(this.jcbMartialStatus.getSelectedItem().toString());
         
-        
+        System.out.println("patient set");
 
         
         try {
             if(PatientDao.updatePatient(patient)){
-                JOptionPane.showMessageDialog(null,"Patient Updated Successfully","Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this,"Patient Updated Successfully","Success", JOptionPane.INFORMATION_MESSAGE);
                 
             }else{
-                JOptionPane.showMessageDialog(null,"Can not update at the moment, PLEASE TRY AGAIN","TRY AGAIN", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this,"Can not update at the moment, PLEASE TRY AGAIN","TRY AGAIN", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
          } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Database Error in update Patient Frame: "+ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Database Error in update Patient Frame: "+ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
             return;
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this,"Database Error in update Patient Frame: "+ex.getMessage(),"Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
+            return;
+            
         }
+        
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

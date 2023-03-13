@@ -9,8 +9,13 @@ package sanjeevaniapp.util;
  * @author LENOVO
  */
 public class NewBulkSMSId {
-    private final static String userName="aryansahu400";
-    private final static String password="sf37WkUaeE@NMUq";
+    //rajsahu400
+    //2rfSzRyamq8tYk@
+    
+    //aryansahu400
+    //sf37WkUaeE@NMUq
+    private final static String userName="rajsahu400";
+    private final static String password="2rfSzRyamq8tYk@";
 
     public static String getUserName() {
         return userName;

@@ -45,7 +45,9 @@ public class ManageReceptionistsFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Manage Receptionist");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 

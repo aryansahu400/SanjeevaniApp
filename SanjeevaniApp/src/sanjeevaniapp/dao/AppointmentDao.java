@@ -22,6 +22,23 @@ public class AppointmentDao {
         return ps.executeUpdate()==1;
     }
     
+    public static boolean updateAppointment(AppointmentPojo app) throws SQLException{
+        Connection conn=DBConnection.getConnection();
+        PreparedStatement ps=conn.prepareStatement("UPDATE appointments SET patient_id=?, patient_name=?,opd=?,date_time=?,doctor_name=?,mobile_no=?");
+        ps.setString(1, app.getPatientId()+"");
+        ps.setString(2,app.getPatientName()+"");
+        ps.setString(3,app.getOPD()+"");
+        ps.setString(4,app.getDateTime()+"");
+        ps.setString(5,app.getDoctorName()+"");
+        ps.setString(6,app.getMobileNo()+"");
+        try{
+        ps.executeUpdate();
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                };
+           return true;
+    }
+    
     public static List<AppointmentPojo> getAppointmentsByDoctorName(String doctorName) throws SQLException{
         Connection conn=DBConnection.getConnection();
         PreparedStatement ps=conn.prepareStatement("SELECT * FROM appointments WHERE doctor_name=? and status=? order by patient_id");

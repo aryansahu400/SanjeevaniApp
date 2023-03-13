@@ -42,7 +42,9 @@ public class ViewEmployeeFrame extends javax.swing.JFrame {
         jtEmployeeRecrds = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("View Employees");
         setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setText("Logout");

@@ -65,6 +65,8 @@ public class ConfirmAppointmentFrame extends javax.swing.JFrame {
         spinnerDate = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Confirm Appointments");
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         BasePanel.setBackground(new java.awt.Color(255, 255, 255));
 

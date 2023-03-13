@@ -57,6 +57,8 @@ public class VerifyOtpFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Verify OTP");
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         basePanel.setBackground(new java.awt.Color(255, 255, 255));
 

@@ -78,35 +78,36 @@ public class PatientDao {
         return ps.executeUpdate()==1;
     }
     
-    public static boolean updatePatient(PatientPojo patient)throws SQLException{
+    public static boolean updatePatient(PatientPojo patient)throws SQLException, Exception{
         Connection conn=DBConnection.getConnection();
-        PreparedStatement ps=conn.prepareStatement("UPDATE PATIENTS SET PATIENT_ID=?,FIRST_NAME=?,LAST_NAME=?,AGE=?,GENDER=?,M_STATUS=?,ADDRESS=?,CITY=?,MOBILE_NO=?,"
-                + "P_DATE=?,OTP=?,OPD=?,DOCTOR_ID=? WHERE PATIENT_ID=?");
          String doctorName=DoctorsDao.getNameById(patient.getDoctorId());
-        AppointmentPojo appointment=new AppointmentPojo(patient.getPatientId(),patient.getFirstName()+" "+patient.getLastname(), "REQUEST", patient.getOpd(), patient.getDate().toString(), doctorName, patient.getMobileNo());
-        if(!AppointmentDao.addAppointment(appointment)){
-            throw new SQLException();
+        AppointmentPojo appointment=new AppointmentPojo(patient.getPatientId()+"",patient.getFirstName()+" "+patient.getLastname(), "REQUEST", patient.getOpd()+"", patient.getDate().toString(), doctorName+"", patient.getMobileNo()+"");
+        if(AppointmentDao.updateAppointment(appointment)){
+            
+        
+            PreparedStatement ps=conn.prepareStatement("UPDATE PATIENTS SET PATIENT_ID=?,FIRST_NAME=?,LAST_NAME=?,AGE=?,GENDER=?,M_STATUS=?,ADDRESS=?,CITY=?,MOBILE_NO=?,"
+                    + "P_DATE=?,OTP=?,OPD=?,DOCTOR_ID=? WHERE PATIENT_ID=?");
+            ps.setString(1, patient.getPatientId());
+            ps.setString(2, patient.getFirstName());
+            ps.setString(3, patient.getLastname());
+            ps.setInt(4,patient.getAge());
+            ps.setString(5, patient.getGender());
+            ps.setString(6, patient.getmStatus());
+            ps.setString(7, patient.getAddress());
+            ps.setString(8, patient.getCity());
+            ps.setString(9, patient.getMobileNo());
+            ps.setDate(10, new java.sql.Date(patient.getDate().getTime()));
+            ps.setInt(11, patient.getOtp());
+            ps.setString(12, patient.getOpd());
+            ps.setString(13, patient.getDoctorId());
+
+
+            ps.setString(14,patient.getPatientId());
+
+            return ps.executeUpdate()==1;
         }
-        
-        
-        ps.setString(1, patient.getPatientId());
-        ps.setString(2, patient.getFirstName());
-        ps.setString(3, patient.getLastname());
-        ps.setInt(4, patient.getAge());
-        ps.setString(5, patient.getGender());
-        ps.setString(6, patient.getmStatus());
-        ps.setString(7, patient.getAddress());
-        ps.setString(8, patient.getCity());
-        ps.setString(9, patient.getMobileNo());
-        ps.setDate(10, new java.sql.Date(patient.getDate().getTime()));
-        ps.setInt(11, patient.getOtp());
-        ps.setString(12, patient.getOpd());
-        ps.setString(13, patient.getDoctorId());
-        
-        
-        ps.setString(14,patient.getPatientId());
-        
-        return ps.executeUpdate()==1;
+        else return false;
+       
     }
     public static PatientPojo loadPatientDetails(String patientId) throws SQLException{
         Connection conn=DBConnection.getConnection();

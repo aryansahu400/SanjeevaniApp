@@ -47,7 +47,9 @@ public class AddEmployeeFrame extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Add Employee");
         setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sanjeevaniapp/gui/admin page.jpg"))); // NOI18N
 

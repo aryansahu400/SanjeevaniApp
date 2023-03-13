@@ -53,7 +53,9 @@ public class RemovePatientFrame extends javax.swing.JFrame {
         btnBack1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Remove Patient");
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 

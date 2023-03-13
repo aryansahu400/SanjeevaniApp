@@ -44,7 +44,9 @@ public class ViewDoctorsFrame extends javax.swing.JFrame {
         btnhome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("View Doctors");
         setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(sanjeevaniapp.util.ImageIconClass.getFavicon());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
